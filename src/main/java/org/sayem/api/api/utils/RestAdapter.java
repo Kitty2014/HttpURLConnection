@@ -1,4 +1,4 @@
-package org.sayem.api.httpurlconnection.api.utils;
+package org.sayem.api.api.utils;
 
 /**
  * Created by syed.sayem on 6/26/15.

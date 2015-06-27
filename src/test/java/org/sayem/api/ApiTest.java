@@ -1,15 +1,15 @@
-package org.sayem.api.httpurlconnection;
+package org.sayem.api;
 
-import org.sayem.api.httpurlconnection.api.utils.ContentType;
-import org.sayem.api.httpurlconnection.api.utils.PostAdapter;
-import org.sayem.api.httpurlconnection.api.utils.RestAdapter;
-import org.sayem.api.httpurlconnection.request.PostRequest;
-import org.sayem.api.httpurlconnection.response.PostResponse;
+import org.sayem.api.api.utils.ContentType;
+import org.sayem.api.api.utils.PostAdapter;
+import org.sayem.api.api.utils.RestAdapter;
+import org.sayem.api.request.PostRequest;
+import org.sayem.api.response.PostResponse;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-public class AppTest {
+public class ApiTest {
 
     @Test
     public void testSetUp() throws IOException {

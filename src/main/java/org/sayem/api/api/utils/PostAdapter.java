@@ -1,4 +1,4 @@
-package org.sayem.api.httpurlconnection.api.utils;
+package org.sayem.api.api.utils;
 
 import com.google.gson.Gson;
 
@@ -11,10 +11,10 @@ import java.net.URL;
  * Created by syed.sayem on 6/26/15.
  */
 
-public class PutAdapter extends AbstractAdapter implements RestAdapter {
+public class PostAdapter extends AbstractAdapter implements RestAdapter {
     private String name;
 
-    protected PutAdapter(GetBuilder<?, ?> builder) {
+    protected PostAdapter(GetBuilder<?, ?> builder) {
         super(builder);
         this.name = builder.name;
 
@@ -35,7 +35,7 @@ public class PutAdapter extends AbstractAdapter implements RestAdapter {
         String body = jsonParser.toJson(getObject());
         HttpURLConnection request = null;
         try {
-            request = putRequest(endpoint, body);
+            request = postRequest(endpoint, body);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -50,12 +50,12 @@ public class PutAdapter extends AbstractAdapter implements RestAdapter {
         return jsonParser.fromJson(response, responseClass);
     }
 
-    private HttpURLConnection putRequest(String command, String body) throws IOException {
+    private HttpURLConnection postRequest(String command, String body) throws IOException {
         HttpURLConnection con = null;
         try {
             URL obj = new URL(command);
             con = (HttpURLConnection) obj.openConnection();
-            con.setRequestMethod(MethodType.PUT.getMethodType());
+            con.setRequestMethod(MethodType.POST.getMethodType());
             con.setRequestProperty("Content-Type", ContentType.JSON.getContentType());
             con.setDoOutput(true);
             OutputStreamWriter osw = new OutputStreamWriter(con.getOutputStream());
@@ -68,8 +68,7 @@ public class PutAdapter extends AbstractAdapter implements RestAdapter {
         return con;
     }
 
-
-    public static abstract class GetBuilder<S extends PutAdapter, B extends GetBuilder<S, B>> extends AbstractAdapter.AbstractBuilder<S, B> {
+    public static abstract class GetBuilder<S extends PostAdapter, B extends GetBuilder<S, B>> extends AbstractAdapter.AbstractBuilder<S, B> {
         private String name;
 
         @SuppressWarnings("unchecked")
@@ -80,11 +79,10 @@ public class PutAdapter extends AbstractAdapter implements RestAdapter {
 
     }
 
-    private static class DefaultGetBuilder extends GetBuilder<PutAdapter, DefaultGetBuilder> {
+    private static class DefaultGetBuilder extends GetBuilder<PostAdapter, DefaultGetBuilder> {
         @Override
-        public PutAdapter build() {
-            return new PutAdapter(this);
+        public PostAdapter build() {
+            return new PostAdapter(this);
         }
     }
 }
-

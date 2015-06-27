@@ -1,4 +1,4 @@
-package org.sayem.api.httpurlconnection.api.utils;
+package org.sayem.api.api.utils;
 
 import com.google.gson.Gson;
 

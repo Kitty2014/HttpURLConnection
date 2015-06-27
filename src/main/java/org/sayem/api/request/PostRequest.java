@@ -1,4 +1,4 @@
-package org.sayem.api.httpurlconnection.request;
+package org.sayem.api.request;
 
 /**
  * Created by syed.sayem on 6/23/15.
